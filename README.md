@@ -1,7 +1,7 @@
 
   
 
-## Subtitle Fixer
+## FIFA world cup 2018
 
   [![badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/imohamaad/FIFA-world-cup-2018/blob/master/LICENSE)
 
