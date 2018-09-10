@@ -1,0 +1,61 @@
+<div class="main-loading" *ngIf="isLoading">
+  <img src="assets/images/loading.svg" />
+</div>
+<div class="main" *ngIf="!isLoading">
+  <div class="back-btn" (click)="cancel();">
+    برگشت
+  </div>
+
+
+  <div class="score-board-warp">
+
+    <div class="score-board">
+      <!-- Fixtures board -->
+      <div class="fixture">
+        <!-- tean-flag -->
+        <div class="team-flag">
+          <img src="{{matchInfo.GuestLogoHQ}}" />
+        </div>
+        <div class="team-flag">
+          {{matchInfo.GuestPoint | persianNumber}} : {{matchInfo.HostPoint | persianNumber}}
+        </div>
+        <div class="team-flag">
+          <img src="{{matchInfo.HostLogoHQ}}" />
+        </div>
+        <!-- team-flag -->
+      </div>
+      <!-- Fixtures board -->
+
+      <!-- game-date -->
+      <div class="game-date">
+        <p>{{matchInfo.GuestTeam}}</p>
+        <p>{{matchInfo.HostTeam}}</p>
+      </div>
+      <div class="date">
+        <p>روز {{matchInfo.JalaliDate}} ساعت {{matchInfo.Time}}</p>
+        <p>{{matchLife}}</p>
+
+      </div>
+      <!-- game-date -->
+    </div>
+
+  </div>
+
+
+
+  <!-- item -->
+  <div class="match-info" *ngFor="let event of matchEvent">
+    <ul>
+      <li *ngIf="matchInfo.HostId != event.TeamId"></li>
+      <li *ngIf="matchInfo.HostId == event.TeamId">{{event.Name}}
+        <img src="assets/images/{{event.Status | status}}">
+      </li>
+      <li>'{{event.StatusTime | persianNumber}}</li>
+      <li *ngIf="matchInfo.GuestId != event.TeamId"></li>
+      <li *ngIf="matchInfo.GuestId == event.TeamId">
+        <img src="assets/images/{{event.Status | status}}"> {{event.Name}}</li>
+    </ul>
+  </div>
+  <!-- /item -->
+
+</div>

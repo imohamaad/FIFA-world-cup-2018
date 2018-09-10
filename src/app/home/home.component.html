@@ -1,0 +1,47 @@
+<div class="main-loading" *ngIf="isLoading">
+  <img src="assets/images/loading.svg" />
+</div>
+<section class="main" *ngIf="!isLoading">
+
+  <!-- nav -->
+  <nav>
+    <ul>
+      <li (click)="sendGroupId(411, 1)" [ngClass]="{'active': classId === 1 }">A</li>
+      <li (click)="sendGroupId(412, 2)" [ngClass]="{'active': classId === 2 }">B</li>
+      <li (click)="sendGroupId(413, 3)" [ngClass]="{'active': classId === 3 }">C</li>
+      <li (click)="sendGroupId(414, 4)" [ngClass]="{'active': classId === 4 }">D</li>
+      <li (click)="sendGroupId(415, 5)" [ngClass]="{'active': classId === 5 }">E</li>
+      <li (click)="sendGroupId(416, 6)" [ngClass]="{'active': classId === 6 }">F</li>
+      <li (click)="sendGroupId(417, 7)" [ngClass]="{'active': classId === 7 }">G</li>
+      <li (click)="sendGroupId(418, 8)" [ngClass]="{'active': classId === 8 }">H</li>
+      <li>
+        <a [routerLink]="['group', postsArray.Widget.Id]">مشاهده تمام بازی‌های این گروه</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- nav -->
+  <ul class="title-list">
+    <li>تیم</li>
+    <li>امتیاز</li>
+  </ul>
+
+  <div class="group-warp">
+    <div class="loading" *ngIf="isGroupLoading">
+      <div class="logo">
+        <img src="assets/images/loading.svg" />
+      </div>
+    </div>
+    <!-- group-team -->
+    <div class="team-warp" *ngFor="let team of postsArray.Table">
+      <a [routerLink]="['team', groupId, 'details', team.Team]">
+        <ul>
+          <li>
+            <img src="{{ team.FlagHQ }}" />{{team.Team}}</li>
+          <li>{{team.Points | persianNumber}}</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+  <!-- /group-team -->
+</section>

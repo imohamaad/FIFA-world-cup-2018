@@ -1,0 +1,44 @@
+<div class="main-loading" *ngIf="isLoading">
+  <img src="assets/images/loading.svg" />
+</div>
+<div class="main" *ngIf="!isLoading">
+  <div class="back-btn" (click)="cancel();">
+    برگشت
+  </div>
+  <header>
+    <h4>بازی‌های {{groupTitle}}</h4>
+  </header>
+  <div class="remind" *ngFor="let team of finalGroupData | slice: firstItem : lastItem">
+
+    <a [routerLink]="['/match', team.Id, 'group', groupData.Widget.Id]">
+      <div class="remind-warp">
+        <ul>
+          <li>
+            <img src="{{team.GuestLogoHQ}}" />
+            <br> {{team.GuestTeam}}</li>
+          <li>{{team.GuestPoint | persianNumber}} : {{team.HostPoint | persianNumber}}</li>
+          <li>
+            <img src="{{team.HostLogoHQ}}" />
+            <br> {{team.HostTeam}}</li>
+        </ul>
+        <div class="remind-date">
+          <p>{{team.JalaliDate}}</p>
+          <p>ساعت {{team.Time}}</p>
+          <p *ngIf="!team.Final">.بازی هنوز انجام نشده است</p>
+          <p *ngIf="team.Final">.بازی به اتمام رسیده است</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div>
+    <div class="page">
+      <ul>
+        <li (click)="nextPage();" *ngIf="nextBtn">بازی‌های بعدی</li>
+        <li (click)="prevPage();" *ngIf="prevBtn">بازی‌های قبلی</li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>

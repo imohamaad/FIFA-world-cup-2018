@@ -1,0 +1,80 @@
+<div class="main-loading" *ngIf="mainLoading">
+  <img src="assets/images/loading.svg" />
+</div>
+<div class="main" *ngIf="!mainLoading">
+  <div class="back-btn" (click)="cancel();">
+    برگشت
+  </div>
+  <div class="team-news">
+    <div class="news-loading" *ngIf="newsLoading">
+      <img src="assets/images/loading.svg" />
+    </div>
+    <ul *ngIf="!newsLoading">
+      <li>
+        <h4>{{team.newsTitle}}</h4>
+        <!-- <h4>{{news.Title + " - " + news.Date | persianNumber}}</h4> -->
+        <p [innerHTML]="team.newsText | limitText : 290"></p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="score-board-warp">
+    <a [routerLink]="['/match', team.MatchId, 'group', teamData.Widget.Id]">
+      <div class="score-board">
+        <!-- Fixtures board -->
+        <div class="fixture">
+          <!-- tean-flag -->
+          <div class="team-flag">
+            <img src="{{team.GuestLogoHQ}}" />
+          </div>
+          <div class="team-flag">
+            {{team.GuestPoint | persianNumber}} : {{team.HostPoint | persianNumber}}
+          </div>
+          <div class="team-flag">
+            <img src="{{team.HostLogoHQ}}" />
+          </div>
+          <!-- team-flag -->
+        </div>
+        <!-- Fixtures board -->
+
+        <!-- game-date -->
+        <div class="game-date">
+          <p>{{team.GuestTeam}}</p>
+          <p>{{team.HostTeam}}</p>
+        </div>
+        <div class="date">
+          <p>ساعت {{team.Time | persianNumber}} روز {{team.JalaliDate | persianNumber}}</p>
+          <p *ngIf="team.Final">بازی هنوز انجام نشده است</p>
+          <p *ngIf="!team.Final">بازی به اتمام رسیده است</p>
+        </div>
+        <!-- game-date -->
+      </div>
+    </a>
+  </div>
+
+  <div class="remind" *ngFor="let team of source | slice: 1:3">
+    <!-- <p *ngIf = i>{{team.Host}} - {{team.Guest}}</p> -->
+    <a [routerLink]="['/match', team.Id, 'group', teamData.Widget.Id]">
+      <div class="remind-warp">
+        <ul>
+          <li>
+            <img src="{{team.GuestLogoHQ}}" />
+            <br> {{team.Guest}}</li>
+          <li>{{team.GuestPoint | persianNumber}} : {{team.HostPoint | persianNumber}}</li>
+          <li>
+            <img src="{{team.HostLogoHQ}}" />
+            <br> {{team.Host}}</li>
+        </ul>
+        <div class="remind-date">
+          <p>{{team.JalaliDate | persianNumber}}</p>
+          <p>ساعت {{team.Time | persianNumber}}</p>
+          <p *ngIf="!team.Final">.بازی هنوز انجام نشده است</p>
+          <p *ngIf="team.Final">بازی به اتمام رسیده است</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+
+</div>
