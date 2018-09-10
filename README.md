@@ -3,7 +3,7 @@
 
 ## Subtitle Fixer
 
-  [![badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/imohamaad/subtitle-fixer/blob/master/LICENSE)
+  [![badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/imohamaad/FIFA-world-cup-2018/blob/master/LICENSE)
 
 Russia world cup 2018 schedule games with [Angular](https://angular.io/).
 All data from [varzesh3.com](http://varzesh3.com) API.
